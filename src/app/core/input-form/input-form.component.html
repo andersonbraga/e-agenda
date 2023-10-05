@@ -1,0 +1,25 @@
+<div [ngSwitch]="type">
+
+  <ng-container *ngSwitchCase="'text'">
+    <div class="form-group mb-3 position-relative">
+      <label class="form-label">{{ placeholder }}:</label>
+      <input class="form-control" [formControl]="control" [ngClass]="{'is-invalid': control.invalid && control.touched}" [type]="type" [placeholder]="placeholder" [dropSpecialCharacters]="false" [mask]="isTelefone ? '(00) 00000-0000' : null" />
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'email'">
+    <div class="form-group mb-3 position-relative">
+      <label class="form-label">{{ placeholder }}:</label>
+      <input class="form-control" [formControl]="control" [ngClass]="{'is-invalid': control.invalid && control.touched}" type="email" [placeholder]="placeholder" />
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'radio'">
+    <div class="form-check">
+      <input class="form-check-input" [disabled]="disabled" [formControl]="control" [value]="value" type="radio" [id]="placeholder" />
+      <label class="form-check-label" [for]="placeholder">
+        {{ placeholder }}
+      </label>
+    </div>
+  </ng-container>
+</div>
