@@ -7,19 +7,14 @@
 
       <form [formGroup]="form" (ngSubmit)="gravar()" class="mt-4">
         <div class="form-group mb-3 position-relative">
-          <label class="form-label">Assunto:</label>
+
           <app-input-form [control]="getFormControl('assunto')" [placeholder]="'Assunto'"></app-input-form>
         </div>
 
         <div class="form-group mb-3 position-relative">
-          <label class="form-label">Tipo de Compromisso:</label>
           <div class="d-flex align-items-center gap-2">
             <app-input-form [control]="getFormControl('tipoLocal')" type="radio" [value]="tipoEnum.REMOTO" placeholder="Remoto"></app-input-form>
             <app-input-form [control]="getFormControl('tipoLocal')" type="radio" [value]="tipoEnum.PRESENCIAL" placeholder="Presencial"></app-input-form>
-
-
-
-
           </div>
         </div>
 

@@ -41,6 +41,18 @@ export class EditarCompromissoComponent implements OnInit {
       this.compromissoService.selecionarPorId(this.idSelecionado).subscribe((res)=>{
         this.form.patchValue(res);
       })
+      const tipoLocalControl = this.form.get('tipoLocal');
+    const linkControl = this.form.get('link');
+    
+    if (tipoLocalControl && linkControl) {
+      tipoLocalControl.valueChanges.subscribe(value => {
+        if (value === this.tipoEnum.PRESENCIAL) {
+          linkControl.disable();
+        } else {
+          linkControl.enable();
+        }
+      });
+    }
       this.camposModificados = false;
 
   }
