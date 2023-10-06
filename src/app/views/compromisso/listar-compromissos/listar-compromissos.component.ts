@@ -13,6 +13,7 @@ import { ListarCompromissoViewModel } from '../models/listar-compromisso-view-mo
 })
 export class ListarCompromissosComponent implements OnInit {
   compromissos: ListarCompromissoViewModel[] = [];
+  
   constructor(private compromissoService: CompromissoService){}
   ngOnInit(): void {
     this.compromissoService.selecionarTodos().subscribe((res) =>{

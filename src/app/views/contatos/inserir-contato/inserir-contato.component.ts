@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { ContatosService } from '../services/contatos.service';
 import { Router } from '@angular/router';
 import { FormsContatoViewModel } from '../models/forms-contato-view-model';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-inserir-contato',
@@ -35,6 +36,7 @@ export class InserirContatoComponent implements OnInit {
     });
   }
 
+
   getFormControl(name: string): FormControl {
     return this.form.get(name) as FormControl || new FormControl();
   }
@@ -46,40 +48,39 @@ export class InserirContatoComponent implements OnInit {
         control?.markAsTouched();
         if (control?.invalid) {
           this.mostrarErros(campo);
+          
         }
       });
+ 
       return; 
     }
-
-    
-
     this.contatoVM = this.form.value;
-
-    this.contatoService.inserir(this.contatoVM).subscribe(res => {
-      this.toastr.success("Contato Inserido com Sucesso");
-      this.router.navigate(['/contatos/listar']);
+    
+    this.contatoService.inserir(this.contatoVM).subscribe({
+      next: res => {
+        this.toastr.success("Contato Inserido com Sucesso");
+        this.router.navigate(['/contatos/listar']);
+      },
+      error: error => {
+        this.toastr.error(`Houve uma falha ao tentar cadastrar o contato: ${error}`);
+      }
     });
   }
-  
+
   mostrarErros(campo: string) {
-    switch (campo) {
-      case 'nome':
-        this.toastr.warning('O nome é obrigatório e deve ter pelo menos 3 caracteres.');
-        break;
-      case 'email':
-        this.toastr.warning('O email é obrigatorio e tem que estar no formato certo.');
-        break;
-      case 'telefone':
-        this.toastr.warning('O telefone é obrigatório.');
-        break;
-      case 'cargo':
-        this.toastr.warning('O cargo é obrigatório.');
-        break;
-      case 'empresa':
-        this.toastr.warning('A empresa é obrigatório.');
-        break;
-      default:
-        this.toastr.warning('O campo é obrigatório e deve ter pelo menos 3 caracteres. ' + campo);
+    const control = this.form.get(campo);
+    
+    if (!control || !control.errors) return; //guard clause
+  
+    if (control.errors['required']) {
+      this.toastr.warning(`O campo ${campo} é obrigatório.`);
+    } else if (control.errors['email']) {
+      this.toastr.warning('O email não está no formato correto.');
+    } else if (control.errors['minlength']) {
+      this.toastr.warning(`O campo ${campo} deve ter pelo menos ${control.errors['minlength'].requiredLength} caracteres.`);
+    } else {
+      this.toastr.warning('Houve um erro no formulário.');
     }
   }
+
 }

@@ -10,6 +10,7 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { InputFormComponent } from 'src/app/core/input-form/input-form.component';
 import { CompromissoService } from './services/compromissos.service';
 import { CoreModule } from 'src/app/core/core.module';
+import { CardCompromissoComponent } from './card-compromisso/card-compromisso.component';
 
 
 
@@ -19,6 +20,7 @@ import { CoreModule } from 'src/app/core/core.module';
     InserirCompromissoComponent,
     EditarCompromissoComponent,
     ExcluirCompromissoComponent,
+    CardCompromissoComponent,
  
   ],
   imports: [

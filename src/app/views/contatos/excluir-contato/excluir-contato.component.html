@@ -1,48 +1,41 @@
 <div class="container">
   <div class="row">
+    <div class="col-12 col-md-10 col-lg-9 mx-auto my-5 card shadow">
+      <div class="card-header">
+        <h1 class="fw-bold text-primary">Excluir Contato</h1>
+      </div>
+      <div class="card-body">
+        <h2 class="fs-5">Tem certeza que deseja excluir o contato <span class="fw-bolder fst-italic">"{{ contatoVM.nome }}"</span>?</h2>
 
-    <div class="col-12 col-md-10 col-lg-9 mx-auto my-5">
+        <dl class="form-group mt-4 row">
+          <dt class="col-md-4">
+            <label class="control-label">Nome:</label>
+          </dt>
+          <dd class="col-md-8">{{ contatoVM.nome }}</dd>
 
-      <div class="text-md-start">
-        <div class="text-md-start">
-          <h1 class="fw-bold text-primary">Excluir Contato</h1>
-          <hr />
-        </div>
+          <dt class="col-md-4">
+            <label class="control-label">Email:</label>
+          </dt>
+          <dd class="col-md-8">{{ contatoVM.email }}</dd>
 
-        <h2 class="fs-5">
-          Tem certeza que deseja excluir o contato
-          <span class="fw-bolder fst-italic">"{{ contatoVM.nome }}"</span>?
-        </h2>
+          <dt class="col-md-4">
+            <label class="control-label">Telefone:</label>
+          </dt>
+          <dd class="col-md-8">{{ contatoVM.telefone }}</dd>
+
+          <dt class="col-md-4">
+            <label class="control-label">Cargo:</label>
+          </dt>
+          <dd class="col-md-8">{{ contatoVM.cargo }}</dd>
+
+          <dt class="col-md-4">
+            <label class="control-label">Empresa:</label>
+          </dt>
+          <dd class="col-md-8">{{ contatoVM.empresa }}</dd>
+        </dl>
       </div>
 
-      <dl class="form-group mt-4 row">
-        <dt class="col-md-4">
-          <label class="control-label">Nome:</label>
-        </dt>
-        <dd class="col-md-8">{{ contatoVM.nome }}</dd>
-
-        <dt class="col-md-4">
-          <label class="control-label">Email:</label>
-        </dt>
-        <dd class="col-md-8">{{ contatoVM.email }}</dd>
-
-        <dt class="col-md-4">
-          <label class="control-label">Telefone:</label>
-        </dt>
-        <dd class="col-md-8">{{ contatoVM.telefone }}</dd>
-
-        <dt class="col-md-4">
-          <label class="control-label">Cargo:</label>
-        </dt>
-        <dd class="col-md-8">{{ contatoVM.cargo }}</dd>
-
-        <dt class="col-md-4">
-          <label class="control-label">Empresa:</label>
-        </dt>
-        <dd class="col-md-8">{{ contatoVM.empresa }}</dd>
-      </dl>
-
-      <div class="card-footer g-grid d-flex gap-1 mt-5">
+      <div class="card-footer d-flex gap-1 mt-5">
         <button data-cy="btnExcluirTarefa" (click)="gravar()" type="button" class="btn btn-danger px-5">
           <i class="bi bi-trash-fill me-2"></i>
           Excluir

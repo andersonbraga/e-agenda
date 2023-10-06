@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-8 mx-auto mt-5">
+      <!-- Título -->
+      <div class="text-md-start mb-4">
+        <h1 class="fw-bold text-primary">Visualizar Contato Detalhes</h1>
+      </div>
+
+      <!-- Card de detalhes -->
+      <div class="card border-0 shadow-lg p-4">
+        <!-- Nome -->
+        <div class="mb-4">
+          <label class="form-label fw-bold">Nome:</label>
+          <p class="lead">{{ contato.nome }}</p>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-4">
+          <label class="form-label fw-bold">Email:</label>
+          <p>{{ contato.email }}</p>
+        </div>
+
+        <!-- Telefone -->
+        <div class="mb-4">
+          <label class="form-label fw-bold">Telefone:</label>
+          <p>{{ contato.telefone }}</p>
+        </div>
+
+        <!-- Cargo -->
+        <div class="mb-4">
+          <label class="form-label fw-bold">Cargo:</label>
+          <p>{{ contato.cargo }}</p>
+        </div>
+
+        <!-- Empresa -->
+        <div class="mb-4">
+          <label class="form-label fw-bold">Empresa:</label>
+          <p>{{ contato.empresa }}</p>
+        </div>
+
+        <!-- Lista de compromissos -->
+        <h3 class="mt-5 mb-4">Compromissos</h3>
+
+        <div *ngIf="contato?.compromissos?.length! > 0; else noCompromissos">
+          <ul class="list-group">
+            <li *ngFor="let compromisso of contato?.compromissos" class="list-group-item">
+              <strong class="d-block mb-1">{{ compromisso?.assunto }}</strong>
+              <small>{{ compromisso?.data }} das {{ compromisso?.horaInicio }} até {{ compromisso?.horaTermino }}</small>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Mensagem quando não há compromissos -->
+        <ng-template #noCompromissos>
+          <div class="alert alert-info mt-3">
+            Este contato ainda não tem compromissos agendados.
+          </div>
+        </ng-template>
+      </div>
+
+      <!-- Botão de voltar -->
+      <div class="d-grid d-md-flex gap-2 mt-3">
+        <a routerLink="/contatos/listar" role="button" class="btn btn-outline-primary">
+          <i class="bi bi-arrow-left me-2"></i>
+          Voltar
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,10 +1,10 @@
 export class VisualizarContatoViewModel{
-  id: string;
-  nome: string;
-  email: string;
-  telefone: string;
-  cargo: string;
-  empresa: string;
+  id: string = "";
+  nome: string = "";
+  email: string = "";
+  telefone: string = "";
+  cargo: string = "";
+  empresa: string = "";
 
   constructor(id:string, nome:string, email: string, telefone: string, cargo:string, empresa: string){
     this.id = id

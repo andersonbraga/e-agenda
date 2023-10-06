@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5">
-      <div class="text-md-start">
+    <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5 card shadow">
+      <div class="card-header">
         <h1 class="fw-bold text-primary">Inserir Novo Contato</h1>
       </div>
-      <form [formGroup]="form" (ngSubmit)="gravar()" class="mt-4">
+      <form [formGroup]="form" (ngSubmit)="gravar()" class="mt-4 card-body">
 
         <div class="form-group mb-3 position-relative">
           <app-input-form [control]="getFormControl('nome')" placeholder="Nome"></app-input-form>
@@ -30,8 +30,7 @@
           <app-input-form [control]="getFormControl('empresa')" placeholder="Empresa"></app-input-form>
         </div>
 
-
-        <div class="card-footer g-grid d-flex gap-1 mt-5">
+        <div class="card-footer d-flex gap-1 mt-5">
           <button type="submit" class="btn btn-primary px-5">
             <i class="bi bi-save me-2"></i> Gravar
           </button>
@@ -43,6 +42,9 @@
     </div>
   </div>
 </div>
+
+
+
 
 
 

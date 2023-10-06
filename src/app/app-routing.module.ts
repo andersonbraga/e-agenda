@@ -9,6 +9,7 @@ import { ListarCompromissosComponent } from './views/compromisso/listar-compromi
 import { InserirCompromissoComponent } from './views/compromisso/inserir-compromisso/inserir-compromisso.component';
 import { EditarCompromissoComponent } from './views/compromisso/editar-compromisso/editar-compromisso.component';
 import { ExcluirCompromissoComponent } from './views/compromisso/excluir-compromisso/excluir-compromisso.component';
+import { VisualizarContatoCompletoComponent } from './views/contatos/visualizar-contato-completo/visualizar-contato-completo.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,10 @@ const routes: Routes = [
   {
     path: 'compromissos/excluir/:id',
     component: ExcluirCompromissoComponent,
+  },
+  {
+    path: 'contatos/visualizar-contato/:id',
+    component: VisualizarContatoCompletoComponent,
   },
 ];
 

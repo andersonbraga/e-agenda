@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { VisualizarContatoViewModel } from '../models/visualizar-contato-view-model';
-import { ContatosService } from '../services/contatos.service';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { VisualizarContatoViewModel } from '../models/visualizar-contato-view-model';
+import { ContatosService } from '../services/contatos.service';
 
 @Component({
   selector: 'app-excluir-contato',
@@ -10,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./excluir-contato.component.css']
 })
 export class ExcluirContatoComponent implements OnInit {
-  contatoVM!: VisualizarContatoViewModel;
+  contatoVM!: VisualizarContatoViewModel ;
   idSelecionado: string | null = null;
 
   constructor(private contatoService: ContatosService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService){}

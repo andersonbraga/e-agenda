@@ -1,7 +1,4 @@
 
-
-import { VisualizarContatoViewModel } from "../../contatos/models/visualizar-contato-view-model";
-
 export class ListarCompromissoViewModel{
   id: string;
   assunto: string;

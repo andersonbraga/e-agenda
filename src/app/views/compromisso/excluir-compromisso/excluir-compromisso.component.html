@@ -1,40 +1,26 @@
 <div class="container">
   <div class="row">
-    <!-- Conteúdo principal -->
-    <div class="col-12 col-md-10 col-lg-9 mx-auto my-5">
-      <!-- Titulo -->
-      <div class="text-md-start">
-        <div class="text-md-start">
-          <h1 class="fw-bold text-primary">Excluir Compromisso</h1>
-          <hr />
-        </div>
-
-        <h2 class="fs-5">
-          Tem certeza que deseja excluir o compromisso
-          <span class="fw-bolder fst-italic">"{{ compromissoVM.assunto }}"</span>?
-        </h2>
+    <div class="col-12 col-md-10 col-lg-9 mx-auto my-5 card shadow">
+      <div class="card-header">
+        <h1 class="fw-bold text-primary">Excluir Compromisso</h1>
       </div>
+      <div class="card-body">
+        <h2 class="fs-5">Tem certeza que deseja excluir o compromisso referente a <span class="fw-bolder fst-italic">"{{ compromissoVM.assunto }}"</span>?</h2>
 
-      <dl class="form-group mt-4 row">
-        <dt class="col-md-4">
-          <label class="control-label">Assunto:</label>
-        </dt>
-        <dd class="col-md-8">{{ compromissoVM.assunto }}</dd>
-
-
-
-
+        <dl class="form-group mt-4 row">
+          <dt class="col-md-4">
+            <label class="control-label">Assunto:</label>
+          </dt>
+          <dd class="col-md-8">{{ compromissoVM.assunto }}</dd>
 
 
-
-
-        <dt class="col-md-4">
-          <label class="control-label">Data:</label>
-        </dt>
-        <dd class="col-md-8">{{ compromissoVM.data }}</dd>
-      </dl>
-
-      <div class="card-footer g-grid d-flex gap-1 mt-5">
+          <dt class="col-md-4">
+            <label class="control-label">Data:</label>
+          </dt>
+          <dd class="col-md-8">{{ compromissoVM.data }}</dd>
+        </dl>
+      </div>
+      <div class="card-footer d-flex gap-1 mt-5">
         <button data-cy="btnExcluirTarefa" (click)="gravar()" type="button" class="btn btn-danger px-5">
           <i class="bi bi-trash-fill me-2"></i>
           Excluir
