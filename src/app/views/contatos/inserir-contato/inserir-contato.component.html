@@ -43,21 +43,16 @@
   </div>
 </div>
 
+<!-- <ng-container [formGroup]="form" *ngFor="let campo of [
+        {control: getFormControl('nome'), placeholder: 'Insira o nome'},
+        {control: getFormControl('email'), placeholder: 'Insira o email do contato'},
+        {control: getFormControl('telefone'), isTelefone: true, placeholder: 'Insira o telefone do contato'},
+        {control: getFormControl('cargo'), placeholder: 'Insira o cargo do contato'},
+        {control: getFormControl('empresa'), placeholder: 'Insira a empresa do contato'}
+      ]">
+  <div class="form-group mb-3 position-relative">
 
-
-
-
-
-<!-- <ng-container *ngFor="let campo of [
-          {control: nome, placeholder: 'Insira o nome'},
-          {control: email, type: 'email', placeholder: 'Insira o email do contato'},
-          {control: telefone, isTelefone: true, placeholder: 'Insira o telefone do contato'},
-          {control: cargo, placeholder: 'Insira o cargo do contato'},
-          {control: empresa, placeholder: 'Insira a empresa do contato'}
-        ]">
-          <div class="form-group mb-3 position-relative">
-            <label class="form-label">{{ campo.placeholder }}:</label>
-            <app-input-form [control]="campo.control" [type]="campo.type || 'text'" [isTelefone]="campo.isTelefone || false" [placeholder]="campo.placeholder.split(' ')[2]">
-            </app-input-form>
-          </div>
-        </ng-container> -->
+    <app-input-form [control]="campo.control" [isTelefone]="campo.isTelefone || false" [placeholder]="campo.placeholder.split(' ')[2]">
+    </app-input-form>
+  </div>
+</ng-container> -->

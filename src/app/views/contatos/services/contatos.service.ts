@@ -47,7 +47,7 @@ export class ContatosService{
       );
   }
 
-  public selecionarPorId(id:string) : Observable<any>{
+  public selecionarPorId(id:string) : Observable<FormsContatoViewModel>{
     return this.http.get<any>(this.endpoint + id, this.obterHeadersAutorizacao())
     .pipe(map((res) => res.dados),
     catchError((err: HttpErrorResponse) => this.processarErroHttp(err))

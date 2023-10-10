@@ -4,6 +4,7 @@ import { FormsContatoViewModel } from '../models/forms-contato-view-model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContatosService } from '../services/contatos.service';
 import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-editar-contato',
@@ -13,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 export class EditarContatoComponent {
   form!: FormGroup;
   contatoVM!: FormsContatoViewModel;
-  idSelecionado: string | null = null;
+  idSelecionado: string = '';
   camposModificados = false;
   
 
@@ -36,14 +37,10 @@ export class EditarContatoComponent {
 
     })
     
-    
-    this.idSelecionado= this.route.snapshot.paramMap.get('id');
-
-    if(!this.idSelecionado)return;
-
-    this.contatoService.selecionarPorId(this.idSelecionado).subscribe((res)=>{
-      this.form.patchValue(res);
-    })
+    this.route.data.pipe(map((dados) => dados['contato'])).subscribe({
+      next: (contato) => this.obterContato(contato),
+      error: (erro) => this.processarFalha(erro),
+    });
     this.camposModificados = false;
    
   }
@@ -66,15 +63,35 @@ export class EditarContatoComponent {
     }
   
     this.contatoVM = this.form.value;
+    
+    
   
-    this.contatoService.editar(this.idSelecionado!, this.contatoVM).subscribe((res) => {
-      console.log(res);
-      this.router.navigate(['/contatos/listar']);
+    this.contatoService.editar(this.idSelecionado, this.contatoVM).subscribe({
+      next: (contato) => this.processarSucesso(contato),
+      error: (erro) => this.processarFalha(erro),
     });
   }
   onCampoAlterado() {
     console.log('Campo alterado');
     this.camposModificados = true;
+  }
+
+  processarSucesso(contato: FormsContatoViewModel) {
+    this.toastr.success(
+      `O contato "${contato.nome}" foi editado com sucesso!`,
+      'Sucesso'
+    );
+
+    this.router.navigate(['/contatos/listar']);
+  }
+
+  processarFalha(erro: Error) {
+    this.toastr.error(erro.message, 'Error');
+  }
+
+  obterContato(contato: FormsContatoViewModel) {
+    this.contatoVM = contato;
+    this.form.patchValue(this.contatoVM);
   }
 
 }

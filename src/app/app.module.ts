@@ -8,10 +8,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { CoreModule } from './core/core.module';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 
-import { ContatosModule } from './views/contatos/contatos.module';
+
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompromissoModule } from './views/compromisso/compromisso.module';
+import { ContatosModule } from './views/contatos/contatos.module';
 
 
 @NgModule({
@@ -30,9 +31,8 @@ import { CompromissoModule } from './views/compromisso/compromisso.module';
     HttpClientModule,
     CoreModule,
     DashboardModule,
-    ContatosModule,
     BrowserAnimationsModule,
-    CompromissoModule,
+    
     
  
 

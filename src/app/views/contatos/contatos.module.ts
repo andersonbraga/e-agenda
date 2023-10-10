@@ -13,6 +13,8 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CardContatoComponent } from './card-contato/card-contato.component';
 import { VisualizarContatoCompletoComponent } from './visualizar-contato-completo/visualizar-contato-completo.component';
 import { ExcluirContatoComponent } from './excluir-contato/excluir-contato.component';
+import { ContatosRoutingModule } from './contatos-routing.module';
+import { CompromissosRoutingModule } from '../compromisso/compromisso-routing.module';
 
 
 
@@ -33,7 +35,9 @@ import { ExcluirContatoComponent } from './excluir-contato/excluir-contato.compo
     RouterModule,
     NgxMaskDirective,
     CoreModule,
-    FormsModule
+    FormsModule,
+    ContatosRoutingModule,
+    CompromissosRoutingModule
     
     
     

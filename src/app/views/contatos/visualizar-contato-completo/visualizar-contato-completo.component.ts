@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { FormsContatoViewModel } from '../models/forms-contato-view-model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ContatosService } from '../services/contatos.service';
+import { map } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-visualizar-contato-completo',
@@ -14,16 +16,25 @@ export class VisualizarContatoCompletoComponent implements OnInit {
   contato: VisualizarCompletaContatoView = {} as VisualizarCompletaContatoView;
 
   constructor(
-    private contatoService: ContatosService,
-    private route: ActivatedRoute
+
+    private route: ActivatedRoute,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
-    const contatoId = this.route.snapshot.params['id'];
-    this.contatoService.selecionarContatoCompleto(contatoId).subscribe(data => {
-      this.contato = data;
-      
+    this.route.data.pipe(map((dados)=> dados['contato'])).subscribe({
+      next: (contatos) => this.obterContatos(contatos),
+      error: (erro) => this.processarFalha(erro),
     });
-    
+
   }
+  obterContatos(contato: VisualizarCompletaContatoView) {
+    this.contato = contato;
+  }
+
+  processarFalha(erro: Error) {
+    this.toastr.error(erro.message, 'Erro');
+  }
+
+
 }

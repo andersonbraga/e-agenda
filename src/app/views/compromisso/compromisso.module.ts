@@ -11,6 +11,8 @@ import { InputFormComponent } from 'src/app/core/input-form/input-form.component
 import { CompromissoService } from './services/compromissos.service';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardCompromissoComponent } from './card-compromisso/card-compromisso.component';
+import { ContatosModule } from '../contatos/contatos.module';
+import { CompromissosRoutingModule } from './compromisso-routing.module';
 
 
 
@@ -26,10 +28,11 @@ import { CardCompromissoComponent } from './card-compromisso/card-compromisso.co
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule,
     NgxMaskDirective,
     FormsModule,
-    CoreModule
+    CoreModule,
+    ContatosModule,
+    CompromissosRoutingModule
  
   ],
   providers:[CompromissoService, provideNgxMask()]

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CompromissoService } from '../services/compromissos.service';
-import { FormsCompromissoViewModel } from '../models/forms-compromisso-view-model';
+
 import { ListarCompromissoViewModel } from '../models/listar-compromisso-view-model';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-listar-compromissos',
@@ -12,13 +12,24 @@ import { ListarCompromissoViewModel } from '../models/listar-compromisso-view-mo
   styleUrls: ['./listar-compromissos.component.css']
 })
 export class ListarCompromissosComponent implements OnInit {
-  compromissos: ListarCompromissoViewModel[] = [];
-  
-  constructor(private compromissoService: CompromissoService){}
+  compromisso: ListarCompromissoViewModel[] = [];
+   
+  constructor(private route: ActivatedRoute, private toastr: ToastrService){}
+
   ngOnInit(): void {
-    this.compromissoService.selecionarTodos().subscribe((res) =>{
-      this.compromissos = res
-    })
+    console.log("teste")
+    this.route.data.pipe(map((dados)=> dados['compromisso'])).subscribe({
+      next: (compromisso) => this.obterCompromissos(compromisso),
+      error: (erro) => this.processarFalha(erro),
+    });
+    
+  }
+  obterCompromissos(compromisso: ListarCompromissoViewModel[]) {
+    this.compromisso = compromisso;
+  }
+
+  processarFalha(erro: Error) {
+    this.toastr.error(erro.message, 'Erro');
   }
 
 }
