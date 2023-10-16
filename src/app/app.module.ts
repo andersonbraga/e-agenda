@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompromissoModule } from './views/compromisso/compromisso.module';
 import { ContatosModule } from './views/contatos/contatos.module';
+import { NgSelectOption, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ContatosModule } from './views/contatos/contatos.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
     ToastrModule.forRoot({
@@ -31,7 +33,8 @@ import { ContatosModule } from './views/contatos/contatos.module';
     HttpClientModule,
     CoreModule,
     DashboardModule,
-    BrowserAnimationsModule,
+    
+    
     
     
  

@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5 card shadow">
+      <div class="card-header">
+        <h1 class="fw-bold text-primary">Editar Tarefa</h1>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="gravar()" class="mt-4 card-body">
+
+        <div class="form-group mb-3 position-relative">
+          <app-input-form [control]="getFormControl('titulo')" placeholder="Título"></app-input-form>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label">Prioridade:</label>
+          <select class="form-select w-100" [formControl]="getFormControl('prioridade')">
+            <option value="0">Baixa</option>
+            <option value="1">Média</option>
+            <option value="2">Alta</option>
+          </select>
+        </div>
+
+
+        <div class="form-group mb-3 position-relative">
+          <app-input-form [control]="getFormControl('itemTitulo')" placeholder="Digite o título do item"></app-input-form>
+          <button type="button" class="btn btn-secondary mt-2" (click)="adicionarItem()">Adicionar</button>
+        </div>
+
+
+        <div *ngFor="let item of itens.controls; let i = index" class="mb-2">
+          <ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{ control: item.get('titulo'), index: i }"></ng-container>
+          <button type="button" class="btn btn-danger" (click)="removerItem(i)">Remover</button>
+        </div>
+
+        <ng-template #itemTemplate let-control="control">
+          <app-input-form [control]="control" placeholder="Título do Item"></app-input-form>
+        </ng-template>
+
+
+        <ng-template #itemTemplate let-control let-index="index">
+          <app-input-form [control]="control" placeholder="Título do Item"></app-input-form>
+        </ng-template>
+
+
+
+        <div class="card-footer d-flex gap-1 mt-5">
+          <button type="submit" class="btn btn-primary px-5">
+            <i class="bi bi-save me-2"></i> Gravar
+          </button>
+          <button routerLink="/tarefas/listar" type="button" class="btn btn-outline-primary px-5">
+            <i class="bi bi-arrow-return-left me-2"></i> Voltar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

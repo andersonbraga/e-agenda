@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5 card shadow">
+      <div class="card-header">
+        <h1 class="fw-bold text-danger">Excluir Tarefa</h1>
+      </div>
+      <div class="card-body">
+        <p class="mb-4">Você tem certeza de que deseja excluir esta tarefa?</p>
+
+        <div class="card-footer d-flex gap-1 mt-5">
+          <button (click)="excluir()" class="btn btn-danger px-5">
+            <i class="bi bi-trash me-2"></i> Excluir
+          </button>
+          <button (click)="cancelar()" class="btn btn-outline-secondary px-5">
+            <i class="bi bi-arrow-return-left me-2"></i> Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

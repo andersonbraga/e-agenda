@@ -29,6 +29,27 @@ const routes: Routes = [
         (m) => m.CompromissoModule
       ),
   },
+  {
+    path: 'categorias',
+    loadChildren: () =>
+      import('./views/categoria/categoria.module').then(
+        (m) => m.CategoriaModule
+      ),
+  },
+  {
+    path: 'despesas',
+    loadChildren: () =>
+      import('./views/despesas/despesas.module').then(
+        (m) => m.DespesasModule
+      ),
+  },
+  {
+    path: 'tarefas',
+    loadChildren: () =>
+      import('./views/tarefas/tarefas.module').then(
+        (m) => m.TarefasModule
+      ),
+  },
 ];
 
 @NgModule({

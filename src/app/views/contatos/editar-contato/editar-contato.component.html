@@ -1,46 +1,37 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5">
-      <div class="text-md-start">
+    <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5 card shadow">
+      <div class="card-header">
         <h1 class="fw-bold text-primary">Editar Contato</h1>
       </div>
-
-      <form [formGroup]="form" class="mt-4">
-
+      <form [formGroup]="form" class="mt-4 card-body">
 
         <div class="form-group mb-3 position-relative">
-          <app-input-form [control]="nome" placeholder="Insira o nome"></app-input-form>
+          <app-input-form [control]="getFormControl('nome')" placeholder="Insira o nome"></app-input-form>
         </div>
-
 
         <div class="form-group mb-3 position-relative">
-          <app-input-form [control]="email" type="email" placeholder="Insira o email do contato"> </app-input-form>
+          <app-input-form [control]="getFormControl('email')" type="email" placeholder="Insira o email do contato"></app-input-form>
         </div>
-
 
         <div class="form-group mb-3 position-relative">
-          <app-input-form [isTelefone]="true" [control]="telefone" placeholder="Insira o telefone do contato"></app-input-form>
+          <app-input-form [isTelefone]="true" [control]="getFormControl('telefone')" placeholder="Insira o telefone do contato"></app-input-form>
         </div>
-
 
         <div class="form-group mb-3 position-relative">
-          <app-input-form [control]="cargo" placeholder="Insira o cargo do contato"></app-input-form>
+          <app-input-form [control]="getFormControl('cargo')" placeholder="Insira o cargo do contato"></app-input-form>
         </div>
-
 
         <div class="form-group mb-3 position-relative">
-          <app-input-form [camposModificados]="camposModificados" [control]="empresa" placeholder="Insira a empresa do contato"></app-input-form>
+          <app-input-form [camposModificados]="camposModificados" [control]="getFormControl('empresa')" placeholder="Insira a empresa do contato"></app-input-form>
         </div>
 
-
-        <div class="card-footer g-grid d-flex gap-1 mt-5">
+        <div class="card-footer d-flex gap-1 mt-5">
           <button data-cy="btnGravar" (click)="gravar()" type="button" class="btn btn-primary px-5">
-            <i class="bi bi-save me-2"></i>
-            Gravar
+            <i class="bi bi-save me-2"></i> Gravar
           </button>
           <button routerLink="/contatos/listar" type="button" class="btn btn-outline-primary px-5">
-            <i class="pi pi-arrow-left me-2"></i>
-            Voltar
+            <i class="bi bi-arrow-return-left me-2"></i> Voltar
           </button>
         </div>
       </form>

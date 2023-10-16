@@ -1,3 +1,4 @@
+import { ListarContatoViewModel } from "../../contatos/models/listar-contato-view-model";
 
 export class ListarCompromissoViewModel{
   id: string;
@@ -5,9 +6,9 @@ export class ListarCompromissoViewModel{
   data: string;
   horaInicio: string;
   horaTermino: string;
-  contato: string;
+  contato: ListarContatoViewModel;
 
-  constructor(id:string,assunto:string, data: string, horaInicio: string, horaTermino:string, contato: string){
+  constructor(id:string,assunto:string, data: string, horaInicio: string, horaTermino:string, contato: ListarContatoViewModel){
     this.id = id
     this.assunto = assunto
     this.data = data

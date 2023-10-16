@@ -16,10 +16,17 @@
 
   <ng-container *ngSwitchCase="'radio'">
     <div class="form-check">
-      <input class="form-check-input" [disabled]="disabled" [formControl]="control" [value]="value" type="radio" [id]="placeholder" />
+      <input class="form-check-input" [disabled]="disabled" [formControl]="control" [value]="value" type="radio" [id]="placeholder" name="formaPagamento" />
       <label class="form-check-label" [for]="placeholder">
         {{ placeholder }}
       </label>
     </div>
   </ng-container>
+
+
+  <ng-container *ngSwitchCase="'date'">
+    <input class="form-control" [formControl]="control" type="date" [ngClass]="{'is-invalid': control.invalid && control.touched}" [placeholder]="placeholder" />
+  </ng-container>
+
+
 </div>

@@ -1,0 +1,7 @@
+<app-lista [title]="'Listar Despesas'" [routerLinkPath]="'/despesas/inserir'" [buttonText]="'Nova Despesa'" [cardTitle]="'Lista de Despesas'">
+  <app-card-item *ngFor="let despesa of despesas" [nomeItem]="despesa.descricao" [editarLink]="'/despesas/editar/' + despesa.id" [deletarLink]="'/despesas/excluir/' + despesa.id">
+    <p class="mb-1">Data: {{ despesa.data | date:'dd/MM/yyyy' : '+0000' }}</p>
+    <p class="mb-1">Valor: {{ despesa.valor }}</p>
+    <p class="mb-1">Forma Pagamento: {{ despesa.formaPagamento }}</p>
+  </app-card-item>
+</app-lista>

@@ -1,0 +1,4 @@
+<app-lista [title]="'Listar Tarefas'" [routerLinkPath]="'/tarefas/inserir'" [buttonText]="'Nova Tarefa'" [cardTitle]="'Lista de Tarefas'">
+  <app-card-item *ngFor="let tarefa of tarefas" [nomeItem]="tarefa.titulo" [editarLink]="'/tarefas/editar/' + tarefa.id" [deletarLink]="'/tarefas/excluir/' + tarefa.id">
+  </app-card-item>
+</app-lista>

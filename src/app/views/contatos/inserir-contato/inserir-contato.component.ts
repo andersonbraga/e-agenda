@@ -46,10 +46,7 @@ export class InserirContatoComponent implements OnInit {
       Object.keys(this.form.controls).forEach(campo => {
         const control = this.form.get(campo);
         control?.markAsTouched();
-        if (control?.invalid) {
-          this.mostrarErros(campo);
-          
-        }
+      
       });
  
       return; 

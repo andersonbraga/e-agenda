@@ -7,6 +7,7 @@ import { ContatosService } from '../../contatos/services/contatos.service';
 import { TipoLocalizacaoCompromissoEnum } from '../models/TipoLocal-compromisso-view-model';
 import { CompromissoService } from '../services/compromissos.service';
 import { VisualizarCompromissoViewModel } from '../models/visualizar-compromisso-view-model';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-excluir-compromisso',
@@ -16,36 +17,42 @@ import { VisualizarCompromissoViewModel } from '../models/visualizar-compromisso
 export class ExcluirCompromissoComponent implements OnInit {
   
   compromissoVM!: VisualizarCompromissoViewModel;
-  idSelecionado: string | null = null;
-  contatos: ListarContatoViewModel[] = [];
-  tipoEnum = TipoLocalizacaoCompromissoEnum;
-
-  constructor(private formBuilder: FormBuilder, private compromissoService: CompromissoService, private router: Router, private route: ActivatedRoute , private toastr: ToastrService, private contatosService: ContatosService){}
-
-  ngOnInit(): void {
-
-    this.idSelecionado= this.route.snapshot.paramMap.get('id');
-    if(!this.idSelecionado)return;
-
  
 
-      this.contatosService.selecionarTodos().subscribe((res) =>{
-        this.contatos = res;
-      })
-      this.compromissoService.selecionarCompromissoCompletoPorId(this.idSelecionado).subscribe((res)=>{
-        this.compromissoVM = res
-      })
+  tipoEnum = TipoLocalizacaoCompromissoEnum;
+
+  constructor(private compromissoService: CompromissoService, private router: Router, private route: ActivatedRoute , private toastr: ToastrService){}
+
+  ngOnInit(): void {
+    this.route.data.pipe(map((dados) => dados['compromisso'])).subscribe({
+      next: (compromisso) => this.obterCompromisso(compromisso),
+      error: (erro) => this.processarFalha(erro),
+    });
   }
 
   gravar() {
-    this.compromissoService.excluir(this.idSelecionado!).subscribe(
-      (res) => {
-        this.router.navigate(['/compromissos', 'listar']);
-        this.toastr.success("Compromisso excluído com sucesso.");
-      },
-      (err) => {
-        this.toastr.error("Ocorreu um erro ao excluir o compromisso.");
-      }
-    );
-  }
+    this.compromissoService.excluir(this.compromissoVM.id).subscribe({
+      next: () => this.processarSucesso(),
+      error: (erro) => this.processarFalha(erro),
+    });
+          }
+
+          obterCompromisso(compromisso: VisualizarCompromissoViewModel) {
+            this.compromissoVM = compromisso;
+          }
+        
+          processarSucesso() {
+            this.toastr.success(
+              `O compromisso foi excluído com sucesso!`,
+              'Sucesso'
+            );
+        
+            this.router.navigate(['/compromissos', 'listar']);
+          }
+        
+          processarFalha(erro: Error) {
+            this.toastr.error(erro.message, 'Erro');
+          }
+
+
 }

@@ -24,7 +24,6 @@ export class ContatosService{
       .post<any>(this.endpoint, contato, this.obterHeadersAutorizacao())
       .pipe(
         map((res) => res.dados),
-        // Interceptar e tratar a mensagem de erro
         catchError((err: HttpErrorResponse) => this.processarErroHttp(err))
       );
   }
@@ -38,6 +37,15 @@ export class ContatosService{
       );
   }
 
+ 
+  
+  public alterarFavorito(id: string, contato: ListarContatoViewModel) {
+    return this.http
+        .put<any>(`${this.endpoint}favoritos/${id}`, contato)
+        .pipe(catchError((erro: HttpErrorResponse) => this.processarErroHttp(erro)));
+}
+  
+
   public editar(id: string, contato: FormsContatoViewModel) {
     return this.http
       .put<any>(this.endpoint + id, contato, this.obterHeadersAutorizacao())
@@ -47,10 +55,12 @@ export class ContatosService{
       );
   }
 
-  public selecionarPorId(id:string) : Observable<FormsContatoViewModel>{
-    return this.http.get<any>(this.endpoint + id, this.obterHeadersAutorizacao())
-    .pipe(map((res) => res.dados),
-    catchError((err: HttpErrorResponse) => this.processarErroHttp(err))
+  public selecionarPorId(id: string): Observable<FormsContatoViewModel> {
+    return this.http
+      .get<any>(this.endpoint + id, this.obterHeadersAutorizacao())
+      .pipe(
+        map((res) => res.dados),
+        catchError((err: HttpErrorResponse) => this.processarErroHttp(err))
       );
   }
 

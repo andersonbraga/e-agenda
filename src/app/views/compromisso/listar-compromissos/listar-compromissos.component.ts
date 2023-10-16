@@ -12,12 +12,11 @@ import { map } from 'rxjs';
   styleUrls: ['./listar-compromissos.component.css']
 })
 export class ListarCompromissosComponent implements OnInit {
-  compromisso: ListarCompromissoViewModel[] = [];
+  compromissos: ListarCompromissoViewModel[] = [];
    
   constructor(private route: ActivatedRoute, private toastr: ToastrService){}
 
   ngOnInit(): void {
-    console.log("teste")
     this.route.data.pipe(map((dados)=> dados['compromisso'])).subscribe({
       next: (compromisso) => this.obterCompromissos(compromisso),
       error: (erro) => this.processarFalha(erro),
@@ -25,7 +24,7 @@ export class ListarCompromissosComponent implements OnInit {
     
   }
   obterCompromissos(compromisso: ListarCompromissoViewModel[]) {
-    this.compromisso = compromisso;
+    this.compromissos = compromisso;
   }
 
   processarFalha(erro: Error) {

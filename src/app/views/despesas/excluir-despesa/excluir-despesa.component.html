@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5 card shadow">
+      <div class="card-header">
+        <h1 class="fw-bold text-danger">Excluir Compromisso</h1>
+      </div>
+      <div class="card-body">
+        <p>Tem certeza que deseja excluir o compromisso: <strong>{{ despesaVM.descricao }}</strong>?</p>
+
+        <div class="card-footer d-flex gap-1 mt-5">
+          <button (click)="excluir()" type="button" class="btn btn-danger px-5">
+            <i class="bi bi-trash me-2"></i> Excluir
+          </button>
+          <button routerLink="/despesas/listar" type="button" class="btn btn-outline-danger px-5">
+            <i class="bi bi-arrow-return-left me-2"></i> Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

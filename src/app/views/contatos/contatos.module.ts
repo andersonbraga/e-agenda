@@ -8,9 +8,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { EditarContatoComponent } from './editar-contato/editar-contato.component';
-
 import { CoreModule } from 'src/app/core/core.module';
-import { CardContatoComponent } from './card-contato/card-contato.component';
 import { VisualizarContatoCompletoComponent } from './visualizar-contato-completo/visualizar-contato-completo.component';
 import { ExcluirContatoComponent } from './excluir-contato/excluir-contato.component';
 import { ContatosRoutingModule } from './contatos-routing.module';
@@ -24,20 +22,21 @@ import { CompromissosRoutingModule } from '../compromisso/compromisso-routing.mo
     InserirContatoComponent,
     ListarContatosComponent,
     EditarContatoComponent,
-    CardContatoComponent,
     VisualizarContatoCompletoComponent,
-    ExcluirContatoComponent
+    ExcluirContatoComponent,
+
 
   ],
   imports: [
     CommonModule,
+    ContatosRoutingModule,
     ReactiveFormsModule,
     RouterModule,
     NgxMaskDirective,
     CoreModule,
     FormsModule,
-    ContatosRoutingModule,
-    CompromissosRoutingModule
+    
+   
     
     
     

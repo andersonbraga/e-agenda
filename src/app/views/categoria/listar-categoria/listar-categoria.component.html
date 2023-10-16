@@ -1,0 +1,4 @@
+<app-lista [title]="'Listar Categorias'" [routerLinkPath]="'/categorias/inserir'" [buttonText]="'Nova Categoria'" [cardTitle]="'Lista de Categorias'">
+  <app-card-item *ngFor="let categoria of categorias" [nomeItem]="categoria.titulo" [editarLink]="'/categorias/editar/' + categoria.id" [deletarLink]="'/categorias/excluir/' + categoria.id">
+  </app-card-item>
+</app-lista>
