@@ -1,5 +1,10 @@
 <app-lista [title]="'Listar Despesas'" [routerLinkPath]="'/despesas/inserir'" [buttonText]="'Nova Despesa'" [cardTitle]="'Lista de Despesas'">
   <div class="d-flex mb-4">
+    <button class="btn" [ngClass]="opcaoSelecionada === FiltroDespesas.TODAS ? 'btn-primary' : 'btn-outline-primary'" (click)="opcaoSelecionada = FiltroDespesas.TODAS; filtrar()">
+      <i *ngIf="opcaoSelecionada === FiltroDespesas.TODAS" class="bi bi-check-circle-fill me-2"></i>
+      Todas
+    </button>
+
     <button class="btn" [ngClass]="opcaoSelecionada === FiltroDespesas.ANTIGAS ? 'btn-primary' : 'btn-outline-primary'" (click)="opcaoSelecionada = FiltroDespesas.ANTIGAS; filtrar()">
       <i *ngIf="opcaoSelecionada === FiltroDespesas.ANTIGAS" class="bi bi-check-circle-fill me-2"></i>
       Nas Antigas

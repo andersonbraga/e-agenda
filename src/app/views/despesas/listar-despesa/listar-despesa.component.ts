@@ -13,7 +13,7 @@ import { DespesaService } from '../service/despesa.service';
 })
 export class ListarDespesaComponent implements OnInit {
   despesas: ListarDespesaViewModel[] = [];
-  opcaoSelecionada = FiltroDespesasEnum.ULTIMOS_30_DIAS;
+  opcaoSelecionada = FiltroDespesasEnum.TODAS;
   FiltroDespesas = FiltroDespesasEnum;
    
   constructor(private route: ActivatedRoute, private toastr: ToastrService, private despesaService: DespesaService ){}
@@ -39,12 +39,22 @@ export class ListarDespesaComponent implements OnInit {
       error: (erro: any) => this.processarFalha(erro)
     });
   }
+  carregarTodasDespesas(): void {
+    this.despesaService.selecionarTodos().subscribe({
+        next: (despesas: ListarDespesaViewModel[]) => this.despesas = despesas,
+        error: (erro: any) => this.processarFalha(erro)
+    });
+}
   filtrar(): void {
     if (this.opcaoSelecionada === FiltroDespesasEnum.ANTIGAS) {
         this.carregarDespesasAntigas();
     } else if (this.opcaoSelecionada === FiltroDespesasEnum.ULTIMOS_30_DIAS) {
         this.carregarDespesasRecentes();
     }
+    else if (this.opcaoSelecionada === FiltroDespesasEnum.TODAS) {
+      this.carregarTodasDespesas();}
+    
+    
 }
   obterDespesas(despesa: ListarDespesaViewModel[]) {
     this.despesas = despesa;
