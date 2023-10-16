@@ -1,14 +1,28 @@
 <app-lista [title]="'Listar Compromissos'" [routerLinkPath]="'/compromissos/inserir'" [buttonText]="'Novo Compromisso'" [cardTitle]="'Lista de Compromissos'">
 
-  <!-- Seção de Filtros -->
   <div class="d-flex mb-4">
-    <button class="btn btn-outline-primary me-2" (click)="opcaoSelecionada = FiltroCompromissosEnum.TODOS; filtrar()">Todos</button>
-    <button class="btn btn-outline-primary me-2" (click)="opcaoSelecionada = FiltroCompromissosEnum.HOJE; filtrar()">Hoje</button>
-    <button class="btn btn-outline-primary me-2" (click)="opcaoSelecionada = FiltroCompromissosEnum.PASSADO; filtrar()">Passado</button>
-    <button class="btn btn-outline-primary" (click)="opcaoSelecionada = FiltroCompromissosEnum.FUTURO; filtrar()">Futuro</button>
+    <button class="btn" [ngClass]="opcaoSelecionada === FiltroCompromissosEnum.TODOS ? 'btn-primary' : 'btn-outline-primary'" (click)="opcaoSelecionada = FiltroCompromissosEnum.TODOS; filtrar()">
+      <i *ngIf="opcaoSelecionada === FiltroCompromissosEnum.TODOS" class="bi bi-check-circle-fill me-2"></i>
+      Todos
+    </button>
+
+    <button class="btn" [ngClass]="opcaoSelecionada === FiltroCompromissosEnum.HOJE ? 'btn-primary' : 'btn-outline-primary'" (click)="opcaoSelecionada = FiltroCompromissosEnum.HOJE; filtrar()">
+      <i *ngIf="opcaoSelecionada === FiltroCompromissosEnum.HOJE" class="bi bi-check-circle-fill me-2"></i>
+      Hoje
+    </button>
+
+    <button class="btn" [ngClass]="opcaoSelecionada === FiltroCompromissosEnum.PASSADO ? 'btn-primary' : 'btn-outline-primary'" (click)="opcaoSelecionada = FiltroCompromissosEnum.PASSADO; filtrar()">
+      <i *ngIf="opcaoSelecionada === FiltroCompromissosEnum.PASSADO" class="bi bi-check-circle-fill me-2"></i>
+      Passado
+    </button>
+
+    <button class="btn" [ngClass]="opcaoSelecionada === FiltroCompromissosEnum.FUTURO ? 'btn-primary' : 'btn-outline-primary'" (click)="opcaoSelecionada = FiltroCompromissosEnum.FUTURO; filtrar()">
+      <i *ngIf="opcaoSelecionada === FiltroCompromissosEnum.FUTURO" class="bi bi-check-circle-fill me-2"></i>
+      Futuro
+    </button>
   </div>
 
-  <!-- Lista de Compromissos -->
+
   <app-card-item *ngFor="let compromisso of compromissos" [nomeItem]="compromisso.assunto" [editarLink]="'/compromissos/editar/' + compromisso.id" [deletarLink]="'/compromissos/excluir/' + compromisso.id">
     <p class="mb-1">Data: {{ compromisso.data }}</p>
     <p class="mb-1">Hora Inicio: {{ compromisso.horaInicio }}</p>
