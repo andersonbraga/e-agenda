@@ -3,30 +3,32 @@
   <!-- Botões de filtro -->
   <div class="row g-2 mb-3">
     <div class="col-6 col-lg-1">
-      <button (click)="selecionarTodos()" class="btn btn-sm px-2 fs-6 fw-semibold" [ngClass]="opcaoSelecionada == FiltroContatosEnum.TODOS ? 'btn-primary' : 'btn-outline-primary'">
+      <button (click)="opcaoSelecionada = FiltroContatosEnum.TODOS; filtrar()" class="btn btn-sm px-2 fs-6 fw-semibold" [ngClass]="opcaoSelecionada == FiltroContatosEnum.TODOS ? 'btn-primary' : 'btn-outline-primary'">
         Todos
       </button>
     </div>
     <div class="col-6 col-lg-1">
-      <button (click)="selecionarFavoritos()" class="btn btn-sm px-2 fs-6 fw-semibold" [ngClass]="opcaoSelecionada == FiltroContatosEnum.FAVORITOS ? 'btn-primary' : 'btn-outline-primary'">
+      <button (click)="opcaoSelecionada = FiltroContatosEnum.FAVORITOS; filtrar()" class="btn btn-sm px-2 fs-6 fw-semibold" [ngClass]="opcaoSelecionada == FiltroContatosEnum.FAVORITOS ? 'btn-primary' : 'btn-outline-primary'">
         Favoritos
       </button>
     </div>
   </div>
 
   <!-- Itens de contato -->
-  <app-card-item *ngFor="let contato of contatos" [nomeItem]="contato.nome" [editarLink]="'/contatos/editar/' + contato.id" [deletarLink]="'/contatos/excluir/' + contato.id" [detalhesLink]="'/contatos/visualizar-contato/' + contato.id">
-    <div class="row g-2">
-      <div class="col-6 col-lg-1">
-        <button (click)="alterarFavorito(contato)" class="btn btn-sm px-2 fs-6 fw-semibold" [ngClass]="contato.favorito ? 'btn-warning' : 'btn-success'">
-          {{ contato.favorito ? 'Desfavoritar' : 'Favoritar' }}
-        </button>
+  <div *ngFor="let contato of contatos">
+    <app-card-item [nomeItem]="contato.nome" [editarLink]="'/contatos/editar/' + contato.id" [deletarLink]="'/contatos/excluir/' + contato.id" [detalhesLink]="'/contatos/visualizar-contato/' + contato.id">
+      <div class="row g-2">
+        <div class="col-6 col-lg-1">
+          <button (click)="favoritarContato(contato)" class="btn btn-sm px-2 fs-6 fw-semibold" [ngClass]="contato.favorito ? 'btn-warning' : 'btn-success'">
+            {{ contato.favorito ? 'Desfavoritar' : 'Favoritar' }}
+          </button>
+        </div>
+        <div class="col">
+          <p class="mb-1">Telefone: {{ contato.telefone }}</p>
+          <p class="mb-1">Cargo: {{ contato.cargo }}</p>
+          <p class="mb-1">Empresa: {{ contato.empresa }}</p>
+        </div>
       </div>
-      <div class="col">
-        <p class="mb-1">Telefone: {{ contato.telefone }}</p>
-        <p class="mb-1">Cargo: {{ contato.cargo }}</p>
-        <p class="mb-1">Empresa: {{ contato.empresa }}</p>
-      </div>
-    </div>
-  </app-card-item>
+    </app-card-item>
+  </div>
 </app-lista>

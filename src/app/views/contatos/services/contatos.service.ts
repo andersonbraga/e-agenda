@@ -28,9 +28,27 @@ export class ContatosService{
       );
   }
 
-  public selecionarTodos(): Observable<ListarContatoViewModel[]> {
+  public selecionarTodos(
+    status: number = 0
+  ): Observable<ListarContatoViewModel[]> {
     return this.http
-      .get<any>(this.endpoint, this.obterHeadersAutorizacao())
+      .get<any>(
+        this.endpoint + `?statusFavorito=${status}`,
+        this.obterHeadersAutorizacao()
+      )
+      .pipe(
+        map((res) => res.dados),
+        catchError((err: HttpErrorResponse) => this.processarErroHttp(err))
+      );
+  }
+
+  public favoritarContato(id: string): Observable<FormsContatoViewModel> {
+    return this.http
+      .put<any>(
+        `${this.endpoint}favoritos/${id}`,
+        {},
+        this.obterHeadersAutorizacao()
+      )
       .pipe(
         map((res) => res.dados),
         catchError((err: HttpErrorResponse) => this.processarErroHttp(err))
