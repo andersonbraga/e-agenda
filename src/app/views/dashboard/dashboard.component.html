@@ -13,12 +13,34 @@
             </p>
             <p class="text-primary fw-bold mt-3">O que você deseja gerenciar?</p>
           </section>
-          <section id="buttons" class="d-grid gap-2 mt-3">
-            <a class="btn btn-primary btn-lg shadow-sm" routerLinkActive="active" routerLink="/contatos/listar"><i class="bi bi-people-fill me-2"></i>Contatos</a>
-            <a class="btn btn-primary btn-lg shadow-sm" routerLink="/compromissos/listar"><i class="bi bi-bookmark-check-fill me-2"></i>Compromissos</a>
-            <a class="btn btn-primary btn-lg shadow-sm" routerLink="/categorias/listar"><i class="bi bi-bookmark-check-fill me-2"></i>Categorias</a>
-            <a class="btn btn-primary btn-lg shadow-sm" routerLink="/despesas/listar"><i class="bi bi-bookmark-check-fill me-2"></i>Despesas</a>
-            <a class="btn btn-primary btn-lg shadow-sm" routerLink="/tarefas/listar"><i class="bi bi-bookmark-check-fill me-2"></i>Tarefas</a>
+          <section id="buttons" class="mt-3">
+            <div class="row row-cols-1 row-cols-md-2 g-3">
+              <div class="col">
+                <a class="btn btn-primary btn-lg btn-block shadow-sm" routerLinkActive="active" routerLink="/contatos/listar">
+                  <i class="bi bi-people-fill me-2"></i>Contatos
+                </a>
+              </div>
+              <div class="col">
+                <a class="btn btn-primary btn-lg btn-block shadow-sm" routerLink="/compromissos/listar">
+                  <i class="bi bi-calendar-check-fill me-2"></i>Compromissos
+                </a>
+              </div>
+              <div class="col">
+                <a class="btn btn-primary btn-lg btn-block shadow-sm" routerLink="/categorias/listar">
+                  <i class="bi bi-tags-fill me-2"></i>Categorias
+                </a>
+              </div>
+              <div class="col">
+                <a class="btn btn-primary btn-lg btn-block shadow-sm" routerLink="/despesas/listar">
+                  <i class="bi bi-cash-stack me-2"></i>Despesas
+                </a>
+              </div>
+              <div class="col">
+                <a class="btn btn-primary btn-lg btn-block shadow-sm" routerLink="/tarefas/listar">
+                  <i class="bi bi-card-checklist me-2"></i>Tarefas
+                </a>
+              </div>
+            </div>
           </section>
         </div>
         <div class="col-12 col-lg-5 text-center">
