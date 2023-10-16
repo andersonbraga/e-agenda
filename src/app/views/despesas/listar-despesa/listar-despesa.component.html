@@ -1,4 +1,15 @@
 <app-lista [title]="'Listar Despesas'" [routerLinkPath]="'/despesas/inserir'" [buttonText]="'Nova Despesa'" [cardTitle]="'Lista de Despesas'">
+  <div class="d-flex mb-4">
+    <button class="btn" [ngClass]="opcaoSelecionada === FiltroDespesas.ANTIGAS ? 'btn-primary' : 'btn-outline-primary'" (click)="opcaoSelecionada = FiltroDespesas.ANTIGAS; filtrar()">
+      <i *ngIf="opcaoSelecionada === FiltroDespesas.ANTIGAS" class="bi bi-check-circle-fill me-2"></i>
+      Nas Antigas
+    </button>
+
+    <button class="btn" [ngClass]="opcaoSelecionada === FiltroDespesas.ULTIMOS_30_DIAS ? 'btn-primary' : 'btn-outline-primary'" (click)="opcaoSelecionada = FiltroDespesas.ULTIMOS_30_DIAS; filtrar()">
+      <i *ngIf="opcaoSelecionada === FiltroDespesas.ULTIMOS_30_DIAS" class="bi bi-check-circle-fill me-2"></i>
+      Últimos 30 Dias
+    </button>
+  </div>
   <app-card-item *ngFor="let despesa of despesas" [nomeItem]="despesa.descricao" [editarLink]="'/despesas/editar/' + despesa.id" [deletarLink]="'/despesas/excluir/' + despesa.id">
     <p class="mb-1">Data: {{ despesa.data | date:'dd/MM/yyyy' : '+0000' }}</p>
     <p class="mb-1">Valor: {{ despesa.valor }}</p>

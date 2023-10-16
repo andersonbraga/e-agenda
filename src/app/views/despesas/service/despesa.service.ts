@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 import { ListarDespesaViewModel } from '../models/listar-despesa-view-model';
 import { VisualizarDespesaViewModel } from '../models/visualizar-despesa-view-model';
 import { environment } from 'src/environments/environment.development';
+import { FiltroDespesasEnum } from '../models/filtro-despesas-enum';
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,18 @@ export class DespesaService {private endpoint: string =
         this.endpoint + 'visualizacao-completa/' + id,
         this.obterHeadersAutorizacao()
       )
+      .pipe(map((res) => res.dados));
+  }
+
+  public selecionarDespesasRecentes(): Observable<ListarDespesaViewModel[]> {
+    return this.http
+      .get<any>(this.endpoint + 'ultimos-30-dias', this.obterHeadersAutorizacao())
+      .pipe(map((res) => res.dados));
+  }
+
+  public selecionarDespesasAntigas(): Observable<ListarDespesaViewModel[]> {
+    return this.http
+      .get<any>(this.endpoint + 'antigas', this.obterHeadersAutorizacao())
       .pipe(map((res) => res.dados));
   }
 
