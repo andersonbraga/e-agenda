@@ -1,7 +1,18 @@
 <app-lista [title]="'Listar Compromissos'" [routerLinkPath]="'/compromissos/inserir'" [buttonText]="'Novo Compromisso'" [cardTitle]="'Lista de Compromissos'">
+
+  <!-- Seção de Filtros -->
+  <div class="d-flex mb-4">
+    <button class="btn btn-outline-primary me-2" (click)="opcaoSelecionada = FiltroCompromissosEnum.TODOS; filtrar()">Todos</button>
+    <button class="btn btn-outline-primary me-2" (click)="opcaoSelecionada = FiltroCompromissosEnum.HOJE; filtrar()">Hoje</button>
+    <button class="btn btn-outline-primary me-2" (click)="opcaoSelecionada = FiltroCompromissosEnum.PASSADO; filtrar()">Passado</button>
+    <button class="btn btn-outline-primary" (click)="opcaoSelecionada = FiltroCompromissosEnum.FUTURO; filtrar()">Futuro</button>
+  </div>
+
+  <!-- Lista de Compromissos -->
   <app-card-item *ngFor="let compromisso of compromissos" [nomeItem]="compromisso.assunto" [editarLink]="'/compromissos/editar/' + compromisso.id" [deletarLink]="'/compromissos/excluir/' + compromisso.id">
     <p class="mb-1">Data: {{ compromisso.data }}</p>
     <p class="mb-1">Hora Inicio: {{ compromisso.horaInicio }}</p>
     <p class="mb-1">Hora Termino: {{ compromisso.horaTermino }}</p>
   </app-card-item>
+
 </app-lista>
