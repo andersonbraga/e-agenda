@@ -1,25 +1,28 @@
 <section class="mt-5">
   <div class="container">
-    <div class="card shadow-lg rounded">
-      <div class="row align-items-center gy-3 p-5">
-        <div class="col-12 col-md-7">
-          <h1 class="card-title fw-bold text-primary mb-3">Painel do Usuário</h1>
-          <h2 class="fw-semibold fs-4 mb-4">Seja Bem-Vindo(a)!</h2>
+    <div class="card shadow-lg rounded p-4">
+      <div class="row align-items-center gy-4">
+        <div class="col-12 col-lg-7">
+          <h1 class="card-title display-4 text-primary mb-3">Painel do Usuário</h1>
+          <h2 class="display-6 fw-normal mb-4">Seja Bem-Vindo(a)!</h2>
           <section id="info" class="fs-5">
             <p class="mt-4">
-              O <span class="text-primary fw-semibold">e-Agenda</span> busca
+              O <span class="text-primary fw-bold">e-Agenda</span> busca
               agilizar o gerenciamento da rotina diária ao facilitar o acesso e
               controle de suas tarefas, contatos, compromissos e despesas.
             </p>
-            <p class="text-primary fw-semibold mt-3">O que você deseja gerenciar?</p>
+            <p class="text-primary fw-bold mt-3">O que você deseja gerenciar?</p>
           </section>
           <section id="buttons" class="d-grid gap-2 mt-3">
-            <a class="btn btn-primary btn-lg" routerLinkActive="active" routerLink="/contatos/listar"><i class="bi bi-people-fill me-2"></i>Contatos</a>
-            <a class="btn btn-primary btn-lg" routerLink="/compromissos/listar"><i class="bi bi-bookmark-check-fill me-2"></i>Compromissos</a>
+            <a class="btn btn-primary btn-lg shadow-sm" routerLinkActive="active" routerLink="/contatos/listar"><i class="bi bi-people-fill me-2"></i>Contatos</a>
+            <a class="btn btn-primary btn-lg shadow-sm" routerLink="/compromissos/listar"><i class="bi bi-bookmark-check-fill me-2"></i>Compromissos</a>
+            <a class="btn btn-primary btn-lg shadow-sm" routerLink="/categorias/listar"><i class="bi bi-bookmark-check-fill me-2"></i>Categorias</a>
+            <a class="btn btn-primary btn-lg shadow-sm" routerLink="/despesas/listar"><i class="bi bi-bookmark-check-fill me-2"></i>Despesas</a>
+            <a class="btn btn-primary btn-lg shadow-sm" routerLink="/tarefas/listar"><i class="bi bi-bookmark-check-fill me-2"></i>Tarefas</a>
           </section>
         </div>
-        <div class="col-12 col-md-5 text-center">
-          <img src="/assets/dashboard-image.svg" class="img-fluid rounded-circle" alt="Dashboard Image" />
+        <div class="col-12 col-lg-5 text-center">
+          <img src="/assets/dashboard-image.svg" class="img-fluid rounded-circle shadow" alt="Dashboard Image" style="max-width: 300px;" />
         </div>
       </div>
     </div>

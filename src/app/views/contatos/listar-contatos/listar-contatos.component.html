@@ -1,15 +1,23 @@
 <app-lista [title]="'Listar Contatos'" [routerLinkPath]="'/contatos/inserir'" [buttonText]="'Novo Contato'" [cardTitle]="'Lista de Contatos'">
-  <app-card-item *ngFor="let contato of contatos" [nomeItem]="contato.nome" [editarLink]="'/contatos/editar/' + contato.id" [deletarLink]="'/contatos/excluir/' + contato.id" [detalhesLink]="'/contatos/visualizar-contato/' + contato.id">
 
+  <!-- Botões de filtro -->
+  <div class="row g-2 mb-3">
+    <div class="col-6 col-lg-1">
+      <button (click)="selecionarTodos()" class="btn btn-sm px-2 fs-6 fw-semibold" [ngClass]="opcaoSelecionada == FiltroContatosEnum.TODOS ? 'btn-primary' : 'btn-outline-primary'">
+        Todos
+      </button>
+    </div>
+    <div class="col-6 col-lg-1">
+      <button (click)="selecionarFavoritos()" class="btn btn-sm px-2 fs-6 fw-semibold" [ngClass]="opcaoSelecionada == FiltroContatosEnum.FAVORITOS ? 'btn-primary' : 'btn-outline-primary'">
+        Favoritos
+      </button>
+    </div>
+  </div>
+
+  <!-- Itens de contato -->
+  <app-card-item *ngFor="let contato of contatos" [nomeItem]="contato.nome" [editarLink]="'/contatos/editar/' + contato.id" [deletarLink]="'/contatos/excluir/' + contato.id" [detalhesLink]="'/contatos/visualizar-contato/' + contato.id">
     <div class="row g-2">
       <div class="col-6 col-lg-1">
-
-
-        <button (click)="filtrar()" class="btn btn-sm px-2 fs-6 fw-semibold" [ngClass]="opcaoSelecionada == StatusFavoritoEnum.FAVORITOS ? 'btn-outline-primary' : 'btn-primary'">
-          {{ opcaoSelecionada == StatusFavoritoEnum.FAVORITOS ? 'Mostrar Todos' : 'Mostrar Favoritos' }}
-        </button>
-
-
         <button (click)="alterarFavorito(contato)" class="btn btn-sm px-2 fs-6 fw-semibold" [ngClass]="contato.favorito ? 'btn-warning' : 'btn-success'">
           {{ contato.favorito ? 'Desfavoritar' : 'Favoritar' }}
         </button>
@@ -20,6 +28,5 @@
         <p class="mb-1">Empresa: {{ contato.empresa }}</p>
       </div>
     </div>
-
   </app-card-item>
 </app-lista>

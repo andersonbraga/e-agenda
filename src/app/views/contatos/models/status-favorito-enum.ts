@@ -1,4 +1,4 @@
 export enum StatusFavorito{
-  'TODOS',
-  'FAVORITOS'
+  'TODOS' =0,
+  'FAVORITOS' = 1
 }
