@@ -19,7 +19,7 @@
     <app-card-item [nomeItem]="contato.nome" [editarLink]="'/contatos/editar/' + contato.id" [deletarLink]="'/contatos/excluir/' + contato.id" [detalhesLink]="'/contatos/visualizar-contato/' + contato.id">
       <div class="row g-2">
         <div class="col-6 col-lg-2">
-          <button (click)="favoritarContato(contato)" class="btn btn-sm px-2 fs-6 fw-semibold" [ngClass]="contato.favorito ? 'btn-warning' : 'btn-success'">
+          <button (click)="favoritarContato(contato)" class="btn btn-sm px-2 fs-6 fw-semibold" [ngClass]="contato.favorito ? 'btn-danger' : 'btn-success'">
             <i class="bi bi-star-fill me-1" *ngIf="contato.favorito"></i>
             <i class="bi bi-star me-1" *ngIf="!contato.favorito"></i>
             {{ contato.favorito ? 'Desfavoritar' : 'Favoritar' }}
