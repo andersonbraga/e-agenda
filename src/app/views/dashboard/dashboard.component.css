@@ -17,3 +17,20 @@
 .btn-primary:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
+
+/* Efeito Hover para os Botões */
+.btn-hover-effect {
+    transition: all 0.3s ease-in-out;  /* Transição suave para todas as propriedades */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra inicial */
+}
+
+.btn-hover-effect:hover {
+    background-color: #007bff; /* Pode ajustar para a cor que quiser */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Sombra um pouco mais profunda ao passar o mouse */
+    transform: translateY(-3px); /* Move o botão um pouco para cima */
+}
+
+.btn-hover-effect:active {
+    transform: translateY(1px); /* Move o botão um pouco para baixo quando pressionado */
+}
+
